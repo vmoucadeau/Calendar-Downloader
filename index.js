@@ -19,6 +19,11 @@ var url = process.env.URL;
 
 if(!process.env.AGALAN_AUTH) throw new Error('AGALAN_AUTH environment variables not set');
 
+if (!fs.existsSync(__dirname + '/web')){
+    console.log("Creating web folder");
+    fs.mkdirSync(__dirname + '/web');
+}
+
 const dl = new DownloaderHelper(url, __dirname + '/web', {
     fileName: '2A.ics',
     override: true,
