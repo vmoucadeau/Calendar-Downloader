@@ -43,17 +43,16 @@ cron.schedule('0 0 18 * * *', () => { // at 6h pm every day
 
 
 console.log("Local API running on port 3200");
-LaunchAPI();
 
-function LaunchAPI() {
+api.listen(3200, () => {
+    
+});
 
-    api.listen(3200, () => {
-        
-    });
+api.get("/agenda.ics", (req, res, next) => {
+    res.sendFile(path.join(__dirname, 'web/agenda.ics'));
+})
 
-    api.get("/agenda.ics", (req, res, next) => {
-        res.sendFile(path.join(__dirname, 'web/agenda.ics'));
-    })
-
-   
-}
+// Downloading calendar on program start
+dl.start().catch((err) => {
+    console.log(err);
+});
