@@ -53,6 +53,7 @@ api.get("/agenda.ics", (req, res, next) => {
 })
 
 // Downloading calendar on program start
+console.log("Downloading calendar on start...");
 dl.start().catch((err) => {
     console.log(err);
 });
