@@ -25,7 +25,7 @@ if (!fs.existsSync(__dirname + '/web')){
 }
 
 const dl = new DownloaderHelper(url, __dirname + '/web', {
-    fileName: 'agenda.ics',
+    fileName: process.env.FILENAME,
     override: true,
     headers: {
         'Authorization': 'Basic ' + process.env.AGALAN_AUTH
