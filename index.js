@@ -19,8 +19,8 @@ var url = process.env.URL;
 
 var calendars = []
 
-if(fs.existsSync(__dirname + "/calendars.json")) {
-    calendars = JSON.parse(fs.readFileSync(__dirname + "/calendars.json"));
+if(fs.existsSync(__dirname + "/config/calendars.json")) {
+    calendars = JSON.parse(fs.readFileSync(__dirname + "/config/calendars.json"));
 }
 
 if(!process.env.AGALAN_AUTH) throw new Error('AGALAN_AUTH environment variables not set');
