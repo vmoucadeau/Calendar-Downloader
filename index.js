@@ -38,12 +38,18 @@ function downloadCalendar(url, filename) {
         override: true,
         headers: {
             'Authorization': 'Basic ' + process.env.AGALAN_AUTH
-        }
+        },
+        retry: false
     });
 
+    dl.on('error', (err) => {
+        console.log('Download Failed, retrying in 1h', err)
+        setTimeout(() => {downloadCalendar(url,filename)}, 3600000);
+    });
     dl.start().catch((err) => {
         console.log(err);
     });
+
 }
 
 
